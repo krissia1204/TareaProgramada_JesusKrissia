@@ -26,4 +26,26 @@ public class Paciente
         
         return this.nombre;
     }
+    
+    public int getEdad()
+    {
+        
+        return this.edad;
+    }
+    
+    public String getEspecialidad()
+    {
+        
+        return this.espcRequerida ;
+    }
+    
+    public String getNvlUrgencia()
+    {
+        
+        return this.nvlUrgencia ;
+    }
+    
+    public Doctor getDocAsignado(){
+        return this.docAsignado;
+    }
 }

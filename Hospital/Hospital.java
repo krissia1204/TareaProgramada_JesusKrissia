@@ -1,33 +1,19 @@
 
-/**
- * Write a description of class Hospital here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class Hospital
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Hospital
-     */
+    private Doctor[] doctores;
+    private ListaEspera le;
+    private Paciente [][] camas;
+    private Nodo cabeza;
     public Hospital()
     {
-        // initialise instance variables
-        x = 0;
+        this.doctores= new Doctor[8];
+        this.le= null;
+        this.camas= new Paciente[4][6];
+        this.cabeza= null;
+        
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+   
 }
