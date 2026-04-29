@@ -23,7 +23,7 @@ public class Hospital
         for(int i=0; i<doctores.length;i++){
             
             actual= doctores[i];
-            if(actual.getEspecialidad()==p.getEspecialidad()&&actual.getPacientes<4){
+            if(actual.getEspecialidad()==p.getEspecialidad()&&actual.getPacientes()<4){
                 if (mejorCandidato==null || actual.getPacientes()<mejorCandidato.getPacientes()){
                     
                     mejorCandidato=actual;
@@ -50,11 +50,19 @@ public class Hospital
     
     
         if(camaEncontrada&&mejorCandidato!=null){
-            mejorCandidato.agregarPaciente(p);
+            mejorCandidato.incrementarPA();
             camas[filaEncontrada][columnaEncontrada]= p;
             
             System.out.println("Paciente ingresado exitosamente");
         }
    
+    }
+    
+    
+    public void verCargaDoc(){
+        System.out.println("LISTA DE DOCTORES; ");
+        for(int i=0; i<doctores.length;i++){
+          doctores[i].imprimirDetalles();  
+        }
     }
 }

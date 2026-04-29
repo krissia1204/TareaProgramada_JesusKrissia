@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Hospital
+comment1.params=
+comment1.target=Hospital()
+comment2.params=p
+comment2.target=void\ ingresarPaciente(Paciente)
+comment3.params=
+comment3.target=void\ verCargaDoc()
+numComments=4
