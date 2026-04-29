@@ -2,10 +2,10 @@
 
 public class ListaEspera
 {
-    private Paciente paciente;
-    private Nodo next;
+    Nodo cabeza;
     public ListaEspera()
     {
+        
     }
 
     
