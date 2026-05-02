@@ -52,27 +52,39 @@ public class Hospital
     }
     
     public void darAlta(int piso, int cama){
-        camas[piso][cama].getDocAsignado().quitarPA();
-        camas[piso][cama]= null;
         
+        if(camas[piso][cama]==null){
+            System.out.println("CAMA VACIA, NO SE PUEDE DAR DE ALTA");
+        }
+        else{
+            camas[piso][cama].getDocAsignado().quitarPA();
+            camas[piso][cama]= null;
         
+            camas[piso][cama]=this.asignarCamaMP();
+        }
         
         
     }
     
     
-    private void asignarCamaMP(){
+    private Paciente asignarCamaMP(){
         Nodo actual = cabeza;
         Nodo anterior= null;
         boolean encontrado = false;
+        Paciente p= null;
         while(actual!=null&& !encontrado){
 
             if (actual.getPaciente().getNvlUrgencia().equals("Critico")){
 
                 Doctor ideal = this.buscarMD(actual.getPaciente());
                 if(ideal!=null){
-                encontrado =true;
-                ideal.incrementarPA();}
+                    p= actual.getPaciente();
+                    encontrado =true;
+                    ideal.incrementarPA();
+                    
+                    if (anterior == null){ cabeza = actual.getNext();}
+                    else{ anterior.setNext(actual.getNext());}
+                }
                 else {
                 anterior=actual;
                 actual= actual.getNext();}
@@ -89,23 +101,31 @@ public class Hospital
             Nodo anteriorN= null;
             while(actualN!=null&& !encontrado){
 
-            if (actualN.getPaciente().getNvlUrgencia().equals("NORMAL")){
-
-                Doctor ideal = this.buscarMD(actualN.getPaciente());
-                if(ideal!=null){
-                    encontrado =true;
-                    ideal.incrementarPA();}
-                else {
-                    anteriorN=actualN;
-                    actualN= actualN.getNext();}
+                if (actualN.getPaciente().getNvlUrgencia().equals("NORMAL")){
+                    
+                    Doctor ideal = this.buscarMD(actualN.getPaciente());
+                    if(ideal!=null){
+                        p= actualN.getPaciente();
+                        encontrado =true;
+                        ideal.incrementarPA();
+                        
+                        if (anteriorN == null){ cabeza = actualN.getNext();}
+                        else{ anteriorN.setNext(actualN.getNext());}
+                        }
+                    else {
+                        anteriorN=actualN;
+                        actualN= actualN.getNext();}
                 }
             
+                
 
             else {
                 anteriorN=actualN;
                 actualN= actualN.getNext();}
             }
         }
+        
+        return p;
         
     }
     
