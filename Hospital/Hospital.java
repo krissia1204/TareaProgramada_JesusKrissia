@@ -17,8 +17,100 @@ public class Hospital
     
     
     public void ingresarPaciente(Paciente p){
-        boolean encontrado= false;
-        Doctor actual= null;
+        Doctor doctorAsignado= this.buscarMD(p);
+    
+        int filaEncontrada= -1;
+        int columnaEncontrada= -1;
+        boolean camaEncontrada= false;
+    
+        for(int i=0;i<4&&!camaEncontrada;i++){
+            for(int j=0;j<6&& !camaEncontrada; j++){
+              if(camas[i][j]==null){
+                  filaEncontrada=i;
+                  columnaEncontrada=j;
+                  camaEncontrada=true;
+              }
+            }
+        }
+    
+    
+        if(camaEncontrada&&doctorAsignado!=null){
+            doctorAsignado.incrementarPA();
+            camas[filaEncontrada][columnaEncontrada]= p;
+            
+            System.out.println("Paciente ingresado exitosamente");
+        }
+   
+    }
+    
+    
+    public void verCargaDoc(){
+        System.out.println("LISTA DE DOCTORES; ");
+        for(int i=0; i<doctores.length;i++){
+          doctores[i].imprimirDetalles();  
+        }
+    }
+    
+    public void darAlta(int piso, int cama){
+        camas[piso][cama].getDocAsignado().quitarPA();
+        camas[piso][cama]= null;
+        
+        
+        
+        
+    }
+    
+    
+    private void asignarCamaMP(){
+        Nodo actual = cabeza;
+        Nodo anterior= null;
+        boolean encontrado = false;
+        while(actual!=null&& !encontrado){
+
+            if (actual.getPaciente().getNvlUrgencia().equals("Critico")){
+
+                Doctor ideal = this.buscarMD(actual.getPaciente());
+                if(ideal!=null){
+                encontrado =true;
+                ideal.incrementarPA();}
+                else {
+                anterior=actual;
+                actual= actual.getNext();}
+                }
+            
+
+            else {
+            anterior=actual;
+            actual= actual.getNext();}
+        }
+        
+        if(!encontrado){
+            Nodo actualN = cabeza;
+            Nodo anteriorN= null;
+            while(actualN!=null&& !encontrado){
+
+            if (actualN.getPaciente().getNvlUrgencia().equals("NORMAL")){
+
+                Doctor ideal = this.buscarMD(actualN.getPaciente());
+                if(ideal!=null){
+                    encontrado =true;
+                    ideal.incrementarPA();}
+                else {
+                    anteriorN=actualN;
+                    actualN= actualN.getNext();}
+                }
+            
+
+            else {
+                anteriorN=actualN;
+                actualN= actualN.getNext();}
+            }
+        }
+        
+    }
+    
+    private Doctor buscarMD(Paciente p){
+         Doctor actual= null;
         Doctor mejorCandidato= null;
         for(int i=0; i<doctores.length;i++){
             
@@ -33,36 +125,7 @@ public class Hospital
            }
        
         }
-    
-        int filaEncontrada= -1;
-        int columnaEncontrada= -1;
-        boolean camaEncontrada= false;
-    
-        for(int i=0;i<4&&!camaEncontrada;i++){
-            for(int j=0;j<6&& !encontrado; j++){
-              if(camas[i][j]==null){
-                  filaEncontrada=i;
-                  columnaEncontrada=j;
-                  camaEncontrada=true;
-              }
-            }
-        }
-    
-    
-        if(camaEncontrada&&mejorCandidato!=null){
-            mejorCandidato.incrementarPA();
-            camas[filaEncontrada][columnaEncontrada]= p;
-            
-            System.out.println("Paciente ingresado exitosamente");
-        }
-   
-    }
-    
-    
-    public void verCargaDoc(){
-        System.out.println("LISTA DE DOCTORES; ");
-        for(int i=0; i<doctores.length;i++){
-          doctores[i].imprimirDetalles();  
-        }
+        
+        return mejorCandidato;
     }
 }

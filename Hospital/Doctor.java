@@ -31,6 +31,10 @@ public class Doctor
         this.pActivos+=1;
     }
     
+    public void quitarPA(){
+        this.pActivos-=1;
+    }
+    
     public void imprimirDetalles(){
         int carga= 4-pActivos;
         System.out.println("-Doctor: "+nombre+ " -Especialidad: "+especialidad+" -Numero de pacientes activos: "+pActivos+ " -Cupos disponibles: "+carga);
