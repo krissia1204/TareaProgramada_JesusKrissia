@@ -1,33 +1,28 @@
 
-/**
- * Write a description of class ListaEspera here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class ListaEspera
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class ListaEspera
-     */
+    Nodo cabeza;
     public ListaEspera()
     {
-        // initialise instance variables
-        x = 0;
+      this.cabeza=null;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    public void agregarAlFinal(Paciente p){
+        Nodo nuevo= new Nodo(p);
+        Nodo actual=cabeza;
+        if(cabeza==null){
+            this.cabeza= nuevo;
+        }
+        
+        else{
+            while(actual.getNext()!=null){
+                actual= actual.getNext();
+            }
+            actual.setNext(nuevo);
+        }
     }
+    
+    
+    
 }

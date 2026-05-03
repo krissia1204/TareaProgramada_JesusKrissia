@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Nodo
+comment1.params=p
+comment1.target=Nodo(Paciente)
+comment2.params=p
+comment2.target=void\ setPaciente(Paciente)
+comment3.params=n
+comment3.target=void\ setNext(Nodo)
+comment4.params=
+comment4.target=Paciente\ getPaciente()
+comment5.params=
+comment5.target=Nodo\ getNext()
+numComments=6

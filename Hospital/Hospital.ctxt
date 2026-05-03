@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Hospital
+comment1.params=
+comment1.target=Hospital()
+comment2.params=p
+comment2.target=void\ ingresarPaciente(Paciente)
+comment3.params=
+comment3.target=void\ verCargaDoc()
+comment4.params=piso\ cama
+comment4.target=void\ darAlta(int,\ int)
+comment5.params=
+comment5.target=Paciente\ asignarCamaMP()
+comment6.params=p
+comment6.target=Doctor\ buscarMD(Paciente)
+comment7.params=
+comment7.target=void\ mostrarEstadoHospi()
+numComments=8

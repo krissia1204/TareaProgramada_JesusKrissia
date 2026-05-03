@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=ListaEspera
+comment1.params=
+comment1.target=ListaEspera()
+comment2.params=p
+comment2.target=void\ agregarAlFinal(Paciente)
+numComments=3
