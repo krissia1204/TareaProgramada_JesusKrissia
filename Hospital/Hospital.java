@@ -8,6 +8,7 @@ public class Hospital
     private Nodo cabeza;
     public Hospital()
     {
+
         this.doctores= new Doctor[8];
         this.le= null;
         this.camas= new Paciente[4][6];
@@ -74,6 +75,7 @@ public class Hospital
         Paciente p= null;
         while(actual!=null&& !encontrado){
 
+    
             if (actual.getPaciente().getNvlUrgencia().equals("Critico")){
 
                 Doctor ideal = this.buscarMD(actual.getPaciente());
@@ -114,7 +116,6 @@ public class Hospital
                         }
                     else {
                         anteriorN=actualN;
-<<<<<<< HEAD
                         actualN= actualN.getNext();
                     }
                 }
@@ -125,48 +126,15 @@ public class Hospital
                 anteriorN=actualN;
                 actualN= actualN.getNext();
                 }
-=======
-                        actualN= actualN.getNext();}
-                }
-            
-                
-
-            else {
-                anteriorN=actualN;
-                actualN= actualN.getNext();}
->>>>>>> 47e21b19aa10da0f1482a81d62f22c2e7ed57d2f
             }
         }
         
         return p;
         
-<<<<<<< HEAD
-=======
     }
     
     private Doctor buscarMD(Paciente p){
-         Doctor actual= null;
-        Doctor mejorCandidato= null;
-        for(int i=0; i<doctores.length;i++){
-            
-            actual= doctores[i];
-            if(actual.getEspecialidad()==p.getEspecialidad()&&actual.getPacientes()<4){
-                if (mejorCandidato==null || actual.getPacientes()<mejorCandidato.getPacientes()){
-                    
-                    mejorCandidato=actual;
-                    
-               }
-               
-           }
-       
-        }
-        
-        return mejorCandidato;
->>>>>>> 47e21b19aa10da0f1482a81d62f22c2e7ed57d2f
-    }
-    
-    private Doctor buscarMD(Paciente p){
-         Doctor actual= null;
+        Doctor actual= null;
         Doctor mejorCandidato= null;
         for(int i=0; i<doctores.length;i++){
             
