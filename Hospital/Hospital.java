@@ -16,6 +16,14 @@ public class Hospital
         
     }
     
+    public void setDoctor(int posicion, Doctor doc) {
+    if (posicion >= 0 && posicion < doctores.length) {
+        this.doctores[posicion] = doc;
+    } else {
+        System.out.println("Índice fuera de rango");
+    }
+    }
+    
     
     public void ingresarPaciente(Paciente p){
         Doctor doctorAsignado= this.buscarMD(p);
@@ -40,6 +48,37 @@ public class Hospital
             camas[filaEncontrada][columnaEncontrada]= p;
             
             System.out.println("Paciente ingresado exitosamente");
+        }
+        
+        else if (p.getNvlUrgencia().equals("Critico")&&!camaEncontrada&&doctorAsignado!=null){
+             int filaEncontradaPC= -1;
+             int columnaEncontradaPC= -1;
+              boolean camaEncontradaPC= false;
+    
+            for(int i=0;i<4&&!camaEncontrada;i++){
+                for(int j=0;j<6&& !camaEncontrada; j++){
+                      if(camas[i][j].getNvlUrgencia().equals("NORMAL")){
+                          camas[i][j]=null;
+                          filaEncontradaPC=i;
+                          columnaEncontradaPC=j;
+                          camaEncontradaPC=true;
+                          doctorAsignado.incrementarPA();
+                          camas[filaEncontrada][columnaEncontrada]= p;
+                      }
+                      
+                      else{
+                          System.out.println("Todas las camas estan ocupadas por pacientes CRITICOS, el paciente será agregado a la lista de espera");
+                          le.agregarAlFinal(p);
+                      }
+                }
+            } 
+            
+            
+         
+        }
+        else{
+            System.out.println("Hospital no cumple condiciones para aceptar este paciente, será agregado a lista de espera");
+            le.agregarAlFinal(p);
         }
    
     }
