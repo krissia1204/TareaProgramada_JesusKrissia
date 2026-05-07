@@ -12,11 +12,11 @@ public class Paciente
      */
     public Paciente(String nom, int laEdad, String especialidad,String nivel )
     {
-        this.nombre= nom;
-        this.edad= laEdad;
-        this.espcRequerida= especialidad;
-        this.nvlUrgencia= nivel;
-        this.docAsignado= null;
+        this.nombre = nom;
+        this.edad = laEdad;
+        this.espcRequerida = especialidad;
+        this.nvlUrgencia = nivel;
+        this.docAsignado = null;
        
     }
 
@@ -47,5 +47,9 @@ public class Paciente
     
     public Doctor getDocAsignado(){
         return this.docAsignado;
+    }
+    
+    public void setDocAsignado(Doctor d) {
+        this.docAsignado = d;
     }
 }

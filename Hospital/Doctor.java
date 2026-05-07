@@ -9,9 +9,9 @@ public class Doctor
     
     public Doctor(String nom, String espc)
     {
-        this.nombre= nom;
-        this.especialidad= espc;
-        this.pActivos=0;
+        this.nombre = nom;
+        this.especialidad = espc;
+        this.pActivos = 0;
     }
 
    
@@ -36,7 +36,16 @@ public class Doctor
     }
     
     public void imprimirDetalles(){
-        int carga= 4-pActivos;
-        System.out.println("-Doctor: "+nombre+ " -Especialidad: "+especialidad+" -Numero de pacientes activos: "+pActivos+ " -Cupos disponibles: "+carga);
+        int carga = 4;
+        if (pActivos == 4) {
+            System.out.printf("  %-10s  (%.3s) : %d/%d  [LLENO]\n", nombre, especialidad.toUpperCase(), pActivos, carga);
+        } else {
+            System.out.printf("  %-10s  (%.3s) : %d/%d  [OK   ]\n", nombre, especialidad.toUpperCase(), pActivos, carga);
+        }
+        
+    }
+    
+    public boolean tieneCupo() {
+        return this.pActivos < 4;
     }
 }
