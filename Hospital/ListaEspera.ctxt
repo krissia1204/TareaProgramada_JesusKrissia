@@ -4,4 +4,6 @@ comment1.params=
 comment1.target=ListaEspera()
 comment2.params=p
 comment2.target=void\ agregarAlFinal(Paciente)
-numComments=3
+comment3.params=posicion
+comment3.target=Paciente\ extraerPosicion(int)
+numComments=4

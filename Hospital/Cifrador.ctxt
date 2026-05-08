@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Cifrador
+comment1.params=
+comment1.target=Cifrador()
+comment2.params=textoPlano
+comment2.target=java.lang.String\ cifrar(java.lang.String)
+comment3.params=usuario\ intentoPass\ usuarioSistema\ passSistema
+comment3.target=boolean\ verificar(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+numComments=4

@@ -63,7 +63,7 @@ public class Hospital
             System.out.println("Paciente ingresado exitosamente");
         }
         
-        else if (p.getNvlUrgencia().equals("Critico")&&!camaEncontrada&&doctorAsignado!=null){
+        else if (p.getNvlUrgencia().equals("CRITICO")&&!camaEncontrada&&doctorAsignado!=null){
              int filaEncontradaPC= -1;
              int columnaEncontradaPC= -1;
               boolean camaEncontradaPC= false;
