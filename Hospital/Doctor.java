@@ -28,11 +28,11 @@ public class Doctor
     }
     
     public void incrementarPA(){
-        this.pActivos+=1;
+        this.pActivos += 1;
     }
     
     public void quitarPA(){
-        this.pActivos-=1;
+        this.pActivos -= 1;
     }
     
     public void imprimirDetalles(){

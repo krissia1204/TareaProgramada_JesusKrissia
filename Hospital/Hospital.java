@@ -25,9 +25,6 @@ public class Hospital
         
     }
     
-    public Doctor[] getDoctores() {
-        return this.doctores;
-    }
     public void setDoctor(int posicion, Doctor doc) {
     if (posicion >= 0 && posicion < doctores.length) {
         this.doctores[posicion] = doc;
@@ -140,14 +137,15 @@ public class Hospital
                 }
                 else {
                 anterior=actual;
-                actual= actual.getNext();}
+                actual= actual.getNext();
                 }
+            }
             
 
             else {
             anterior=actual;
             actual= actual.getNext();}
-        }
+        }       
         
         if(!encontrado){
             Nodo actualN = cabeza;
