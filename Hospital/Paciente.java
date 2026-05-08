@@ -52,4 +52,11 @@ public class Paciente
     public void setDocAsignado(Doctor d) {
         this.docAsignado = d;
     }
+    
+    public void imprimirDetalles(){
+        System.out.println("Nombre del paciente"+nombre);
+        System.out.println("Edad: "+edad);
+        System.out.println("Especialidad requerida: "+espcRequerida);
+        System.out.println("Nivel de urgencia: "+nvlUrgencia);
+    }
 }

@@ -96,6 +96,17 @@ public class Hospital
    
     }
     
+    public void imprimirLE(){
+        if(this.le==null){
+            System.out.println("Lista de espera vacia, no se han ingresado pacientes");
+        }
+        else{
+            System.out.println("Pacientes en lista de espera: ");
+            le.mostrar();
+        }
+        
+    }
+    
     
     public void verCargaDoc(){
         System.out.println("LISTA DE DOCTORES: ");
