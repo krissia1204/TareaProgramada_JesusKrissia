@@ -72,6 +72,7 @@ public class Hospital {
             camas[filaEncontrada][columnaEncontrada] = p;
             System.out.println("Paciente ingresado exitosamente");
         }
+<<<<<<< Updated upstream
  
         // CASO 2: no hay camas pero el paciente es CRITICO
         else if (p.getNvlUrgencia().equals("CRITICO") && !camaEncontrada && doctorAsignado != null) {
@@ -100,6 +101,129 @@ public class Hospital {
                         // Todas las camas tienen pacientes CRITICOS, no se puede desplazar
                         System.out.println("Todas las camas estan ocupadas por pacientes CRITICOS, el paciente será agregado a la lista de espera");
                         le.agregarAlFinal(p);
+=======
+        
+        else if (p.getNvlUrgencia().equals("CRITICO")&&!camaEncontrada&&doctorAsignado!=null){
+             int filaEncontradaPC= -1;
+             int columnaEncontradaPC= -1;
+              boolean camaEncontradaPC= false;
+    
+            for(int i=0;i<4&&!camaEncontradaPC;i++){
+                for(int j=0;j<6&& !camaEncontradaPC; j++){
+                      if(camas[i][j].getNvlUrgencia().equals("NORMAL")){
+                          camas[i][j].getDocAsignado().quitarPA();
+                          camas[i][j]=null;
+                          filaEncontradaPC=i;
+                          columnaEncontradaPC=j;
+                          camaEncontradaPC=true;
+                          doctorAsignado.incrementarPA();
+                          p.setDocAsignado(doctorAsignado);
+                          camas[filaEncontradaPC][columnaEncontradaPC]= p;
+                          System.out.println("Cama con paciente NORMAL liberada,paciente ingresado exitosamente");
+                          return;
+                      }
+                      
+                      else{
+                          System.out.println("Todas las camas estan ocupadas por pacientes CRITICOS, el paciente será agregado a la lista de espera");
+                          le.agregarAlFinal(p);
+                      }
+                }
+            } 
+            
+            
+         
+        }
+        else{
+            System.out.println("Hospital no cumple condiciones para aceptar este paciente, será agregado a lista de espera");
+            le.agregarAlFinal(p);
+        }
+   
+    }
+    
+    public void imprimirLE(){
+        if(this.le==null){
+            System.out.println("Lista de espera vacia, no se han ingresado pacientes");
+        }
+        else{
+            System.out.println("Pacientes en lista de espera: ");
+            le.mostrar();
+        }
+        
+    }
+    
+    
+    public void verCargaDoc(){
+        System.out.println("LISTA DE DOCTORES: ");
+        for(int i = 0; i < doctores.length; i++){
+          doctores[i].imprimirDetalles();  
+        }
+    }
+    
+    public void darAlta(int piso, int cama){
+        if(camas[piso][cama] == null){
+            System.out.println("\nCAMA VACIA, NO SE PUEDE DAR DE ALTA");
+        }
+        else{
+            camas[piso][cama].getDocAsignado().quitarPA();
+            camas[piso][cama]= null;
+            System.out.println("\nALTA EXITOSA, SE PROCEDE A REVISAR LISTA DE ESPERA");
+            camas[piso][cama]=this.asignarCamaMP();
+        }
+        
+        
+    }
+    
+    
+    private Paciente asignarCamaMP(){
+        Nodo actual = le.getCabeza();
+        Nodo anterior= null;
+        boolean encontrado = false;
+        Paciente p= null;
+        while(actual!=null&& !encontrado){
+
+    
+            if (actual.getPaciente().getNvlUrgencia().equals("CRITICO")){
+
+                Doctor ideal = this.buscarMD(actual.getPaciente());
+                if(ideal!=null){
+                    p= actual.getPaciente();
+                    encontrado =true;
+                    ideal.incrementarPA();
+                    
+                    if (anterior == null){ le.setCabeza( actual.getNext());}
+                    else{ anterior.setNext(actual.getNext());}
+                }
+                else {
+                anterior=actual;
+                actual= actual.getNext();}
+                }
+            
+
+            else {
+            anterior=actual;
+            actual= actual.getNext();}
+        }
+        
+        if(!encontrado){
+            Nodo actualN = le.getCabeza();
+            Nodo anteriorN= null;
+            while(actualN!=null&& !encontrado){
+
+                if (actualN.getPaciente().getNvlUrgencia().equals("NORMAL")){
+                    
+                    Doctor ideal = this.buscarMD(actualN.getPaciente());
+                    if(ideal!=null){
+                        p= actualN.getPaciente();
+                        encontrado =true;
+                        ideal.incrementarPA();
+                        
+                        if (anteriorN == null){ le.setCabeza( actualN.getNext());}
+                        else{ anteriorN.setNext(actualN.getNext());}
+                        }
+                    else {
+                        anteriorN=actualN;
+                        actualN= actualN.getNext();
+>>>>>>> Stashed changes
                     }
                 }
             }

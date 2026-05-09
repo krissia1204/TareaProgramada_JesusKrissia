@@ -17,6 +17,7 @@ public class ListaEspera {
     public Nodo getCabeza() {
         return this.cabeza;
     }
+<<<<<<< Updated upstream
  
     // Agrega un paciente al final de la lista de espera
     public void agregarAlFinal(Paciente p) {
@@ -30,6 +31,23 @@ public class ListaEspera {
             // Recorre hasta el último nodo y enlaza el nuevo al final
             while (actual.getNext() != null) {
                 actual = actual.getNext();
+=======
+    
+    public void setCabeza(Nodo n){
+        this.cabeza= n;
+    }
+    
+    public void agregarAlFinal(Paciente p){
+        Nodo nuevo= new Nodo(p);
+        Nodo actual=cabeza;
+        if(cabeza==null){
+            this.cabeza= nuevo;
+        }
+        
+        else{
+            while(actual.getNext()!=null){
+                actual= actual.getNext();
+>>>>>>> Stashed changes
             }
             actual.setNext(nuevo);
         }
