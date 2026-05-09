@@ -10,7 +10,7 @@ public class Hospital
     {
 
         this.doctores = new Doctor[8];
-        this.le = null;
+        this.le = new ListaEspera();
         this.camas = new Paciente[4][6];
         this.cabeza = null;
         
@@ -68,15 +68,18 @@ public class Hospital
              int columnaEncontradaPC= -1;
               boolean camaEncontradaPC= false;
     
-            for(int i=0;i<4&&!camaEncontrada;i++){
-                for(int j=0;j<6&& !camaEncontrada; j++){
+            for(int i=0;i<4&&!camaEncontradaPC;i++){
+                for(int j=0;j<6&& !camaEncontradaPC; j++){
                       if(camas[i][j].getNvlUrgencia().equals("NORMAL")){
                           camas[i][j]=null;
                           filaEncontradaPC=i;
                           columnaEncontradaPC=j;
                           camaEncontradaPC=true;
                           doctorAsignado.incrementarPA();
-                          camas[filaEncontrada][columnaEncontrada]= p;
+                          p.setDocAsignado(doctorAsignado);
+                          camas[filaEncontradaPC][columnaEncontradaPC]= p;
+                          System.out.println("Cama con paciente NORMAL liberada,paciente ingresado exitosamente");
+                          return;
                       }
                       
                       else{
@@ -122,7 +125,7 @@ public class Hospital
         else{
             camas[piso][cama].getDocAsignado().quitarPA();
             camas[piso][cama]= null;
-        
+            System.out.println("\nALTA EXITOSA, SE PROCEDE A REVISAR LISTA DE ESPERA");
             camas[piso][cama]=this.asignarCamaMP();
         }
         
@@ -131,14 +134,14 @@ public class Hospital
     
     
     private Paciente asignarCamaMP(){
-        Nodo actual = cabeza;
+        Nodo actual = le.getCabeza();
         Nodo anterior= null;
         boolean encontrado = false;
         Paciente p= null;
         while(actual!=null&& !encontrado){
 
     
-            if (actual.getPaciente().getNvlUrgencia().equals("Critico")){
+            if (actual.getPaciente().getNvlUrgencia().equals("CRITICO")){
 
                 Doctor ideal = this.buscarMD(actual.getPaciente());
                 if(ideal!=null){

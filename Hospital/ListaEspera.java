@@ -8,6 +8,10 @@ public class ListaEspera
       this.cabeza=null;
     }
     
+    public Nodo getCabeza(){
+        return this.cabeza;
+    }
+    
     public void agregarAlFinal(Paciente p){
         Nodo nuevo= new Nodo(p);
         Nodo actual=cabeza;
@@ -66,7 +70,7 @@ public class ListaEspera
         Nodo actual= cabeza;
         int contador=0;
        
-        while(actual.getNext()!=null){
+        while(actual!=null){
             contador++;
             actual.getPaciente().imprimirDetalles();
             System.out.println("Posicion del paciente en LE: "+contador);
