@@ -15,4 +15,6 @@ comment6.params=
 comment6.target=Doctor\ getDocAsignado()
 comment7.params=d
 comment7.target=void\ setDocAsignado(Doctor)
-numComments=8
+comment8.params=
+comment8.target=void\ imprimirDetalles()
+numComments=9
