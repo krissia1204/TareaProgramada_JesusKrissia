@@ -49,7 +49,7 @@ public class Paciente {
  
     // Imprime los datos del paciente en consola
     public void imprimirDetalles() {
-        System.out.println("Nombre del paciente: " + nombre);
+        System.out.println("Nombre del paciente:  " + nombre);
         System.out.println("Edad: " + edad);
         System.out.println("Especialidad requerida: " + espcRequerida);
         System.out.println("Nivel de urgencia: " + nvlUrgencia);
