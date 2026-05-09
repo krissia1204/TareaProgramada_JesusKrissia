@@ -71,6 +71,7 @@ public class Hospital
             for(int i=0;i<4&&!camaEncontradaPC;i++){
                 for(int j=0;j<6&& !camaEncontradaPC; j++){
                       if(camas[i][j].getNvlUrgencia().equals("NORMAL")){
+                          camas[i][j].getDocAsignado().quitarPA();
                           camas[i][j]=null;
                           filaEncontradaPC=i;
                           columnaEncontradaPC=j;
