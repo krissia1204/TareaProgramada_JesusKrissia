@@ -5,34 +5,55 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
-        Hospital hospital = new Hospital();
+        Cifrador cifrado= new Cifrador();
         
-        int opcion;
-        do {
-            System.out.println("\n============================================");
-            System.out.println("              MENU PRINCIPAL");
-            System.out.println("============================================");
-            System.out.println(" 1. Ver estado del hospital");
-            System.out.println(" 2. Ingresar paciente");
-            System.out.println(" 3. Dar de alta");
-            System.out.println(" 4. Ver lista de espera");
-            System.out.println(" 5. Ver carga de doctores");
-            System.out.println(" 6. Buscar paciente");
-            System.out.println(" 7. Reporte general");
-            System.out.println(" 8. Salir");
-            System.out.println("============================================");
-            System.out.print(" Seleccione una opcion: ");
+        Hospital hospital = new Hospital();
+        int intento= 0;
+        
+        String usuario= "";
+        String password= "";
+        
+        do{
+        
+        System.out.println("\n============================================");
+        System.out.println(" Digite un usuario valido para ingresar al sistema.");
+        System.out.println("============================================");
+        usuario= sc.nextLine();
+        System.out.println("\n============================================");
+        System.out.println(" Digite la contraseña.");
+        System.out.println("============================================");
+        password = sc.nextLine();
+        
+        
+      
+            if(cifrado.verificar(usuario,password,"admin","#Y6L!6*6")){
+        
+            int opcion;
+                do {
+                    System.out.println("\n============================================");
+                    System.out.println("              MENU PRINCIPAL");
+                    System.out.println("============================================");
+                    System.out.println(" 1. Ver estado del hospital");
+                    System.out.println(" 2. Ingresar paciente");
+                    System.out.println(" 3. Dar de alta");
+                    System.out.println(" 4. Ver lista de espera");
+                    System.out.println(" 5. Ver carga de doctores");
+                    System.out.println(" 6. Buscar paciente");
+                    System.out.println(" 7. Reporte general");
+                    System.out.println(" 8. Salir");
+                    System.out.println("============================================");
+                    System.out.print(" Seleccione una opcion: ");
             
-            opcion = sc.nextInt();
-            sc.nextLine();
+                    opcion = sc.nextInt();
+                    sc.nextLine();
             
-            switch(opcion) {
-                case 1:
-                    hospital.mostrarEstadoHospi();
-                    break;
-                case 2:
-                    System.out.print("\nNombre del paciente    : ");
-                    String nombre = sc.nextLine();
+                    switch(opcion) {
+                        case 1:
+                            hospital.mostrarEstadoHospi();
+                            break;
+                        case 2:
+                            System.out.print("\nNombre del paciente    : ");
+                            String nombre = sc.nextLine();
                     System.out.print("Edad                   : ");
                     int edad = sc.nextInt();
                     sc.nextLine();
@@ -93,8 +114,16 @@ public class Main {
                 case 8:
                     System.out.println("Sistema cerrado");
                     break;
+                }
+            }   while (opcion != 8);
             }
-        } while (opcion != 8);
+    
+        else{
+        intento ++;
+        int rest= 3-intento;
+        System.out.println("Credenciales incorrectas intente de nuevo. Intentos restantes: "+rest);
+        }
+        } while(intento<3&&!cifrado.verificar(usuario,password,"admin","#Y6L!6*6"));
         
         sc.close();
     }
